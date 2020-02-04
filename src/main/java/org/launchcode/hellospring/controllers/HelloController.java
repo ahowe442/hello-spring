@@ -182,5 +182,80 @@ public class HelloController {
                 "</html>";
         return html;
     }
+
+    @GetMapping("languages")
+    @ResponseBody
+    public String listLanguages(){
+        return "<html>" +
+                "<body>" +
+                "<h1>Skill Tracker</h1>" +
+                "<h2>Here is the list of skills we'd like you to learn</h2>" +
+                "<ol>1.  Java</ol>" +
+                "<ol>2.  JavaScript</ol>" +
+                "<ol>3.  Python</ol>";
+    }
+
+    @GetMapping("form5")
+    public String enterFormElements(){
+
+        String html = "<html>" +
+                "<body>" +
+                "<h2>Name: </h2>" +
+                "\n" +
+                "<form method = 'get' action = 'userEntryForm'>" +
+                "<input type = 'text' name = 'name1', value = name />" +
+                "\n" +
+                "<h2>My Favorite Language: </h2>" +
+                "<label for=\"language-select\">Choose a language:</label>\n" +
+                "\n" +
+                "<select name=\"lang1\" id=\"lang-select\">\n" +
+                "    <option value=\"\">--Please choose an option--</option>\n" +
+                "    <option value=\"Java\">Java</option>\n" +
+                "    <option value=\"Javascript\">JavaScript</option>\n" +
+                "    <option value=\"Python\">Python</option>\n" +
+                "</select>" +
+                "\n" +
+                "<h2>My Second Favorite Language: </h2>" +
+                "<label for=\"language-select\">Choose a language:</label>\n" +
+                "\n" +
+                "<select name=\"lang2\" id=\"lang-select\">\n" +
+                "    <option value=\"\">--Please choose an option--</option>\n" +
+                "    <option value=\"Java\">Java</option>\n" +
+                "    <option value=\"Javascript\">JavaScript</option>\n" +
+                "    <option value=\"Python\">Python</option>\n" +
+                "</select>" +
+                "\n" +
+                "\n" +
+                "<h2>My Third Favorite Language: </h2>" +
+                "<label for=\"language-select\">Choose a language:</label>\n" +
+                "\n" +
+                "<select name=\"lang3\" id=\"lang-select\">\n" +
+                "    <option value=\"\">--Please choose an option--</option>\n" +
+                "    <option value=\"Java\">Java</option>\n" +
+                "    <option value=\"Javascript\">JavaScript</option>\n" +
+                "    <option value=\"Python\">Python</option>\n" +
+                "</select>" +
+                "<input type = 'submit'; value = 'Submit Favorites' />" +
+                "</form>" +
+                "</body>" +
+                "</html>";
+        return html;
+    }
+    //Handler that accepts post requests.
+    @RequestMapping(value = "userEntryForm", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String createMessage(@RequestParam String name1, String lang1, String lang2, String lang3){
+        String html = "<html>" +
+                "<body>" +
+                    "<h1>"+name1+"</h1>" +
+                            "<p>" +
+                        "<ol>"+lang1+"</ol>" +
+                        "<ol>"+lang2+"</ol>" +
+                        "<ol>"+lang3+"</ol>" +
+                            "</p>" +
+                            "</body>" +
+                            "</html>";
+        return html;
+    }
 }
 
